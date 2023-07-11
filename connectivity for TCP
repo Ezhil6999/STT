@@ -1,0 +1,42 @@
+import socket
+
+HOST = 'localhost'
+PORT = 1244
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.bind((HOST, PORT))
+server_socket.listen(1)
+print('Server listening on {}:{}'.format(HOST, PORT))
+client_socket, client_address = server_socket.accept()
+print('Connected by', client_address)
+
+while True:
+    data = client_socket.recv(1024).decode()
+    if not data:
+        break
+    print('Received from client:', data)
+    response = 'Response from server: {}'.format(data)
+    client_socket.sendall(response.encode())
+client_socket.close()
+server_socket.close()
+------------------------------------------------------------------------------------------------------------------------------==========
+import socket
+
+HOST = 'localhost'  # Server IP address or hostname
+PORT = 1244  # Port to connect to
+
+# Create a socket object
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Connect to the server
+client_socket.connect((HOST, PORT))
+
+# Send data to the server
+message = 'Hello, server!'
+client_socket.sendall(message.encode())
+
+# Receive a response from the server
+response = client_socket.recv(1024).decode()
+print('Received from server:', response)
+
+# Close the connection
+client_socket.close()
