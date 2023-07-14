@@ -1,0 +1,27 @@
+import wave
+obj=wave.open("Classical.wav","rb")
+print("Number of Channels",obj.getnchannels())
+print("Nuber of width ",obj.getsampwidth())
+print("Number of FrameRate ",obj.getframerate())
+print("Number of Frame ",obj.getnframes())
+frame=obj.readframes(-1)
+print(type(frame))
+print(type(frame[0]))
+print(len(frame))
+obj.close()
+
+new_obj=wave.open("Ezhil_1_Audio.wav","wb")
+new_obj.setnchannels(2)
+new_obj.setsampwidth(2)
+new_obj.setframerate(16000.0)
+new_obj.writeframes(frame)
+obj.close()
+Output:
+
+Number of Channels 1
+Nuber of width  2
+Number of FrameRate  48000
+Number of Frame  471961
+<class 'bytes'>
+<class 'int'>
+943922
