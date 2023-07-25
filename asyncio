@@ -1,0 +1,29 @@
+import asyncio
+
+async def main():
+    task=asyncio.create_task(other_function()) # this will automatically without calling the variable when free time occurs
+    print("a")
+    await asyncio.sleep(5)
+    print("b")
+    # task # RETURNS  only a b 1 not 2 it will skip the printing
+    # await task # it will return a b 1 2
+async def other_function():
+    print("1")
+    await asyncio.sleep(2)
+    print("2")
+asyncio.run(main())
+
+
+# 11111111111111111111111111111111111111111111111111111111111111111111111
+
+# import asyncio
+#
+# async def main():
+#     print("a")
+#     await other_function()
+#     print("b")
+# async def other_function():
+#     print("1")
+#     await asyncio.sleep(2)
+#     print("2")
+# asyncio.run(main())
