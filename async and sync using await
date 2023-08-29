@@ -1,0 +1,53 @@
+import asyncio
+
+async def main():
+    task = asyncio.create_task(other_function())
+    print("Starting")
+    await asyncio.sleep(1)
+    print("Ending")
+    # await task 
+    return_value=await task
+    print("answer: ",return_value)
+    
+async def other_function():
+    print("1")
+    await asyncio.sleep(2)
+    print("2")
+    return 10
+asyncio.run(main())
+
+#3333333333333333333333333333333333333333
+
+# import asyncio
+# async def main():
+#     task = asyncio.create_task(other_function())
+#     print("Starting")
+#     await asyncio.sleep(5)
+#     print("Ending")
+# async def other_function():
+#     print("1")
+#     await asyncio.sleep(1)
+#     print("2")
+# asyncio.run(main())
+
+#222222222222222222222222222222222222222
+
+# import asyncio
+# async def main():
+#     print("Starting")
+#     await other_function()
+#     print("Ending")
+# async def other_function():
+#     print("1")
+#     await asyncio.sleep(5)
+#     print("2")
+# asyncio.run(main())
+
+
+#11111111111111111111111111111111111111111
+
+# async def main():
+#     print("Starting")
+#     await asyncio.sleep(5)
+#     print("Ending")
+# asyncio.run(main())
