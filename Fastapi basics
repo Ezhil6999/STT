@@ -19,3 +19,22 @@ def myfunc():
 @app.get("/{id}")
 def myfun(id:int):
     return f'Hello{type(id)}'
+
+111111111111111111111111111111111111111111111 Query Parameters 1111111      
+  
+# http://127.0.0.1:8000/learn?age=65
+# Query Parameters
+@app.get("/learn")
+def myfun(age:int):
+    return f'Age is {age}'
+
+222222222222222222222222222222222222222222222 Query Parameters 222222222
+
+# http://127.0.0.1:8000/learn?age=76&show=false
+# Query Parameters
+@app.get("/learn")
+def myfun(age:int,show:bool):
+    if show:
+        return f'api is {age} year old application'
+    else:
+        return f'Can not show'
