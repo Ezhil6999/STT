@@ -1,0 +1,21 @@
+from  fastapi import FastAPI
+app=FastAPI()
+
+@app.get("/")
+def myfunc():
+    return {"message" : "Hello Worldssss"}
+
+# Dynamic Routing
+# @app.get("/{id}")
+# def myfunc1(id):
+#      a=myfun(id)
+#      return f'Hello {id}, {a}'
+
+@app.get("/name")
+def myfunc():
+    return "Ezhil raj"
+
+# Dynamic Routing Parameter Type
+@app.get("/{id}")
+def myfun(id:int):
+    return f'Hello{type(id)}'
