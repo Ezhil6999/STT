@@ -38,3 +38,15 @@ def myfun(age:int,show:bool):
         return f'api is {age} year old application'
     else:
         return f'Can not show'
+
+3333333333333333333333333333333333333333333  Query Parameters 33333333333333
+# http://127.0.0.1:8000/learn?age=76
+# Query Parameters
+@app.get("/learn")
+def myfun(age:Optional[int]=None):
+    if age==None:
+        return "AGE IS not PROVIDED"
+    else:
+        return f'AGE is {age}'
+
+
