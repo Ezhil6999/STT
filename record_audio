@@ -1,0 +1,47 @@
+import pyaudio
+import wave
+from array import array
+from struct import pack
+
+def record(outputFile):
+    # CHUNK=2048
+    # FORMAT=pyaudio.paInt16
+    # CHANNELS=2
+    # RATE=44100
+    # RECORD_SECONDS=10
+    audio = pyaudio.PyAudio()
+    FORMAT = pyaudio.paInt16
+    CHANNELS = 1
+    RATE = 16000
+    # A frame must be either 10, 20, or 30 ms in duration for webrtcvad
+    RECORD_SECONDS = 30
+    CHUNK = int(RATE * RECORD_SECONDS / 1000) # 16000*30/1000  = 480
+
+
+    p=pyaudio.PyAudio()
+    stream=p.open(
+        format=FORMAT, # 16bit
+        channels=CHANNELS, #1
+        rate=RATE, #44100
+        input=True, 
+        frames_per_buffer=CHUNK #1024 
+    )
+    print("recording.....")
+    frames=[]
+    for i in range(0,int(RATE/CHUNK*RECORD_SECONDS)): # 44100/1024*10 ==> 430
+        data=stream.read(CHUNK)
+        print(len(data)) # chunk(1024) * 4 = 4096
+        frames.append(data)
+    print("* done recording")
+    stream.stop_stream()
+    stream.close()
+    p.terminate()
+    wf=wave.open(outputFile,'wb') 
+    wf.setnchannels(CHANNELS)
+    wf.setsampwidth(p.get_sample_size(FORMAT))
+    wf.setframerate(RATE)
+    wf.writeframes(b''.join(frames))
+    wf.close()
+    
+record('output.wav')
+    
