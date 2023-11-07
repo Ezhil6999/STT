@@ -1,0 +1,17 @@
+import wave                                                                     
+wav_obj = wave.open('a.wav', mode='rb')
+sample_freq=wav_obj.getframerate()
+channel=wav_obj.getnchannels()
+width=wav_obj.getsampwidth()
+frames=wav_obj.getnframes()
+comptype=wav_obj.getcomptype()
+params=wav_obj.getparams()
+readframes=wav_obj.readframes(10)
+rewind=wav_obj.rewind()
+print("frame rate per second ",sample_freq)
+print("Channel of the audio ",channel) # 1 for mono 2 for  stereo
+print("width of the audio",width)
+print("frames is ",frames)
+print("com type ",comptype)
+print("params is : ",params)
+print("readframes  is ",readframes)
