@@ -1,0 +1,21 @@
+# usefull for path handling
+
+import pathlib 
+
+k=pathlib.Path.home()/'Ezhil'
+print("home is seted as ",k)
+print(k.is_file())
+
+my_python_file_path = pathlib.Path(__file__)
+print(my_python_file_path)
+
+
+p = pathlib.Path('.')
+print("print all the file and directory",p.iterdir())
+print("in that path has any directory it will print that directory    ",[x for x in p.iterdir() if x.is_dir()])
+
+print("print all the .py file ",list(p.glob('**/*.py')))
+
+
+
+
