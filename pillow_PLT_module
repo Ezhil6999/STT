@@ -1,0 +1,29 @@
+from PIL import Image
+import os, sys
+
+
+image1=Image.open("lama2-2.jpg")
+image2=Image.open("lama2.jpg")
+image3=Image.open("lama2-3.png")
+image4=Image.open("lama2-blackwhite.jpg")
+print("lama2-2",image1.format, image1.size, image1.mode)
+print("lama2",image2.format, image2.size, image2.mode)
+print("lama2-3",image3.format, image3.size, image3.mode)
+print("lama2-black white",image4.format, image4.size, image4.mode) # lama2-black white JPEG (752, 564) RGB
+
+# convert files to JPEG
+print(sys.argv[1:])  # ['lama2-3.png']
+for infile in sys.argv[1:]:
+    print("infile",infile)   # infile lama2-3.png
+    f, e = os.path.splitext(infile)
+    print("f    ",f,"      e    ",e) # f     lama2-3       e     .png
+    outfile = f + ".jpg"
+    if infile != outfile:
+        try:
+            with Image.open(infile) as im:
+                im.save(outfile)
+        except OSError:
+            print("cannot convert", infile)
+# input: python pillow_PIL_module.py lama2-3.png
+# output: lama2-3.jpg
+            
