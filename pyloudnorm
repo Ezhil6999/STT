@@ -1,0 +1,14 @@
+import pyloudnorm
+import soundfile as sf  # To read the WAV file
+
+# Replace 'your_file_path.wav' with the path to your WAV file
+file_path = 'your_file_path.wav'
+
+# Load the audio file using soundfile
+audio_data, sample_rate = sf.read(file_path)
+
+# Measure loudness using pyloudnorm
+meter = pyloudnorm.Meter(sample_rate)
+loudness = meter.integrated_loudness(audio_data)
+
+print(f"The loudness of the audio file is {loudness} LUFS")
