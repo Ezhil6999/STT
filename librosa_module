@@ -1,0 +1,35 @@
+# import librosa
+# import librosa.display
+# import matplotlib.pyplot as plt
+# y, sr = librosa.load('a.wav')
+# print(y)
+# print(sr)
+# plt.plot(y)
+# plt.title('Signal')
+# plt.xlabel('Time (samples)')
+# plt.ylabel('Amplitude')
+# plt.show()
+
+import librosa
+import librosa.display
+import matplotlib.pyplot as plt
+y, sr = librosa.load('a.wav')
+
+# fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 6))
+
+# ax1.plot(y);
+# ax1.title('Signal');
+# ax1.xlabel('Time (samples)');
+# ax1.ylabel('Amplitude');
+plt.plot(y)
+
+import numpy as np
+n_fft = 2048
+ft = np.abs(librosa.stft(y[:n_fft], hop_length = n_fft+1))
+plt.plot(ft);
+plt.title('Spectrum');
+plt.xlabel('Frequency Bin');
+plt.ylabel('Amplitude');
+plt.tight_layout()
+
+plt.show()
