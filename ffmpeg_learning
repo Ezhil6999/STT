@@ -1,0 +1,18 @@
+                                                                FFMPEG
+FFMPEG(Fast-forward MPEG)  
+MPEG -Moving Picture Experts Group
+---------------------------------------------------------------------------------------------------------------------------
+Convert .avi to .mp3 :
+=> ffmpeg -i avi.avi avi2.mp4       	-i: Specifies the input file option.
+Quatity :
+ffmpeg -i avi.avi -q 23 avi2.mp4		-q: quatity       
+example : if original quality of the vedio is 28.7 MB
+if we give q is 8 the output file MB is 8MB
+like wise for 23 --> 6.5 MB  for 42  --> 5 MB
+thus q value increases quality or MB decreases
+IF you are doing this for mp4 you have to use like this,
+ffmpeg -i avi.avi -crf 23 avi2.mp4
+https://ffmpeg.org/ffmpeg.html
+
+
+
